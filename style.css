@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --unselected-icon: #75777D;
+    --selected-icon-dark: #FCFCFC;
+    --selected-icon-light: #3A3D46;
+
+    --dark-gray: #22252D;
+    --medium-gray: #272B33;
+    --light-gray: #292D36;
+
+    --light-green: #26B79F;
+    --light-red: #F47A7A;
+
+    --light-white: #F9F9F9;
+    --medium-white: #F7F7F7;
+
+    --background-gray: #F0F0F0;
+}
+
+body {
+    background-color: var(--background-gray);
+}
+
+#calculator {
+    width: 100vw;
+    max-width: 450px;
+    height: 100vh;
+    max-height: 780px;
+
+    background-color: var(--dark-gray);
+
+    margin: 70px auto;
+
+    border-radius: 25px;
+}
+
+#calculator-screen {
+    height: 40%;
+    width: 100%;
+
+    background-color: var(--dark-gray);
+
+    border-radius: 30px;
+    position: relative;
+}
+
+#view-mode {
+    height: 50px;
+    width: 100px;
+    border-radius: 15px;
+
+    background-color: var(--light-gray);
+
+    display: flex;
+    position: absolute;
+    top: 15px;
+    left: calc(50% - 50px);
+
+    font-size: 22px;
+    color: var(--selected-icon-dark);
+}
+
+.view-mode-half {
+    height: 50px;
+    width: 50px;
+
+    padding: 14px 0;
+
+    text-align: center;
+
+    border-radius: 15px;
+}
+
+
+#calculator-keys {
+    height: 60%;
+    width: 100%;
+
+    background-color: var(--light-gray);
+
+    border-radius: 30px;
+}
