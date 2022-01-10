@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 :root {
@@ -77,11 +78,33 @@ body {
 }
 
 
-#calculator-keys {
+#calculator-keyboard {
     height: 60%;
     width: 100%;
 
     background-color: var(--light-gray);
 
     border-radius: 30px;
+    padding: 22px;
+}
+
+
+.calculator-key {
+    width: 70px;
+    height: 70px;
+
+    padding: 25px 0;
+
+    background-color: var(--medium-gray);
+    text-align: center;
+    color: white;
+    font: 30px;
+    font-weight: bold;
+
+
+    border-radius: 15px;
+}
+
+.calculator-key:hover {
+    cursor: pointer;
 }
