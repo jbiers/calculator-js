@@ -28,10 +28,8 @@ body {
 }
 
 #calculator {
-    width: 100vw;
-    max-width: 450px;
-    height: 100vh;
-    max-height: 780px;
+    width: 450px;
+    height: 870px;
 
     background-color: var(--dark-gray);
 
@@ -41,7 +39,7 @@ body {
 }
 
 #calculator-screen {
-    height: 40%;
+    height: 35%;
     width: 100%;
 
     background-color: var(--dark-gray);
@@ -66,6 +64,24 @@ body {
     color: var(--selected-icon-dark);
 }
 
+#calculator-text {
+  padding: 230px 40px 0 40px;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+#calculator-text * {
+  display: inline-block;
+}
+
+#calculator-text .operand {
+  color: white;
+}
+
+#calculator-text .operator {
+  color: var(--light-red);
+}
+
 .view-mode-half {
     height: 50px;
     width: 50px;
@@ -79,21 +95,28 @@ body {
 
 
 #calculator-keyboard {
-    height: 60%;
+    height: 65%;
     width: 100%;
 
     background-color: var(--light-gray);
 
     border-radius: 30px;
-    padding: 22px;
+    position: relative;
+}
+
+#calculator-keys {
+    display: grid;
+    grid-template-columns: 80px 80px 80px 80px;
+    grid-gap: 10px;
+    padding: 50px 50px 0 50px;
 }
 
 
 .calculator-key {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 
-    padding: 25px 0;
+    padding: 30px 0;
 
     background-color: var(--medium-gray);
     text-align: center;
@@ -105,6 +128,43 @@ body {
     border-radius: 15px;
 }
 
+.equal-sign {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 5;
+  
+    color: var(--light-green);
+  
+    width: 171px;
+}
+
+.clear-sign {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  
+    color: var(--light-green);
+  
+    width: 171px; 
+}
+
+.calculator-key.operator {
+    color: var(--light-red);
+}
+
 .calculator-key:hover {
     cursor: pointer;
+    background-color: var(--selected-icon-light);
+}
+
+#dash {
+    margin: 45px auto;
+    bottom: 25px; 
+    width: 170px;
+    height: 5px;
+    border-radius: 2px;
+    
+    background-color: var(--selected-icon-light);
 }
