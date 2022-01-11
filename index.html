@@ -9,21 +9,18 @@
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-    <script src="script.js"></script>
-
-
     <title>Calculator</title>
 </head>
 
 <body>
     <main>
-        <div id="calculator">
+        <div id="calculator" class="dark-mode">
             <div id="calculator-screen">
                 <div id="view-mode">
-                    <div class="view-mode-half unselected">
+                    <div id="light-mode-btn" class="view-mode-half unselected">
                         <i class='bx bx-sun'></i>
                     </div>
-                    <div class="view-mode-half selected">
+                    <div id="dark-mode-btn" class="view-mode-half selected">
                         <i class='bx bx-moon'></i>
                     </div>
                 </div>
@@ -36,21 +33,21 @@
             </div>
             <div id="calculator-keyboard">
                 <div id="calculator-keys">
-                    <div class="calculator-key">7</div>
-                    <div class="calculator-key">8</div>
-                    <div class="calculator-key">9</div>
+                    <div class="calculator-key nocolor">7</div>
+                    <div class="calculator-key nocolor">8</div>
+                    <div class="calculator-key nocolor">9</div>
                     <div class="calculator-key operator"><i class='bx bx-plus'></i></div>
-                    <div class="calculator-key">4</div>
-                    <div class="calculator-key">5</div>
-                    <div class="calculator-key">6</div>
+                    <div class="calculator-key nocolor">4</div>
+                    <div class="calculator-key nocolor">5</div>
+                    <div class="calculator-key nocolor">6</div>
                     <div class="calculator-key operator"><i class='bx bx-minus'></i></div>
-                    <div class="calculator-key">1</div>
-                    <div class="calculator-key">2</div>
-                    <div class="calculator-key">3</div>
+                    <div class="calculator-key nocolor">1</div>
+                    <div class="calculator-key nocolor">2</div>
+                    <div class="calculator-key nocolor">3</div>
                     <div class="calculator-key operator"><i class='bx bx-x'></i></div>
-                    <div class="calculator-key"><i class='bx bx-undo'></i></div>
-                    <div class="calculator-key">0</div>
-                    <div class="calculator-key">.</div>
+                    <div class="calculator-key nocolor"><i class='bx bx-undo'></i></div>
+                    <div class="calculator-key nocolor">0</div>
+                    <div class="calculator-key nocolor">.</div>
                     <div class="calculator-key operator">÷</div>
                     <div class="calculator-key clear-sign">C</div>
                     <div class="calculator-key equal-sign">=</div>
@@ -60,6 +57,8 @@
             </div>
         </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
