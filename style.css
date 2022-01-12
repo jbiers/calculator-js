@@ -113,11 +113,13 @@ body {
 }
 
 #calculator-text {
-  padding: 230px 40px 0 40px;
+  padding: 230px 0 0 0;
   font-weight: bold;
   font-size: 50px;
 
+  width: 360px;
 
+  margin: 0 auto;
 
   overflow: hidden;
 }
