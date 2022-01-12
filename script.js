@@ -127,10 +127,25 @@ const operators = Array.from(document.getElementsByClassName('operator'));
 let currentOperator = ' ';
 
 function clickOperator(operator) {
-    currentOperator = operator;
-    operatorClicked = true;
+    if (!operatorClicked) {
+        currentOperator = operator;
+        operatorClicked = true;
 
-    updateText(operatorText, operator);
+        updateText(operatorText, operator);
+    }
+
+    else {
+        currentFirstNumber = solve(currentFirstNumber, currentSecondNumber, currentOperator);
+        currentSecondNumber = 0;
+
+        clearText(firstNumText);
+        clearText(secondNumText);
+        clearText(operatorText);
+
+        currentOperator = operator;
+        updateText(operatorText, currentOperator);
+        updateText(firstNumText, currentFirstNumber);
+    }
 };
 
 operators.forEach(operator => {
