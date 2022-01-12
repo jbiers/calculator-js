@@ -18,6 +18,50 @@ function subtract(a, b) {
     return a - b;
 };
 
+function resolveEquation(operator) {
+    if (previousOperator == '+') {
+        currentFirstNumber = add(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
+    }
+
+    else if (previousOperator == '-') {
+        currentFirstNumber = subtract(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
+    }
+
+    else if (previousOperator == '÷') {
+        currentFirstNumber = divide(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
+    }
+
+    else {
+        currentFirstNumber = multiply(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
+    }
+};
+
+
+// Deal with theme changes
 const darkModeBtn = document.getElementById('dark-mode-btn');
 const lightModeBtn = document.getElementById('light-mode-btn');
 const calculator = document.getElementById('calculator');
@@ -57,3 +101,65 @@ lightModeBtn.addEventListener("click", () => {
 
     darkMode = false;
 });
+
+// Deal with pressing numbers
+const numbers = Array.from(document.getElementsByClassName('number-key'));
+let currentFirstNumber = 0;
+let currentSecondNumber = 0;
+let currentOperator = ' ';
+let previousOperator = ' ';
+let operatorIsOn = false;
+
+function clickNumber(number) {
+    if (operatorIsOn) {
+        currentSecondNumber = (currentSecondNumber * 10) + number;
+
+        // update screen to show current second number
+        console.log(currentSecondNumber);
+    }
+
+    else {
+        currentFirstNumber = (currentFirstNumber * 10) + number;
+
+        // update screen to show current first number
+        console.log(currentFirstNumber);
+    }
+};
+
+numbers.forEach(number => {
+    number.addEventListener('click', () => {
+        clickNumber(Number(number.textContent));
+    });
+});
+
+// Deal with pressing operators
+const operators = Array.from(document.getElementsByClassName('operator'));
+
+function clickOperator(operator) {
+    if (operatorIsOn) {
+
+        resolveEquation(operator);
+    }
+
+    else {
+        // update screen to add operator
+        console.log(operator);
+
+        previousOperator = operator;
+        operatorIsOn = true;
+    }
+};
+
+operators.forEach(operator => {
+    operator.addEventListener('click', () => {
+        clickOperator(operator.textContent);
+    });
+});
+
+// Deal with equal sign pressing
+const equalSign = document.getElementById('equal-sign');
+
+equalSign.addEventListener('click', () => {
+    resolveEquation(previousOperator);
+})
+
