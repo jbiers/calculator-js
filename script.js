@@ -137,10 +137,9 @@ const operators = Array.from(document.getElementsByClassName('operator'));
 
 function clickOperator(operator) {
     if (operatorIsOn) {
-
         resolveEquation(operator);
     }
-
+    // test
     else {
         // update screen to add operator
         console.log(operator);
@@ -160,6 +159,6 @@ operators.forEach(operator => {
 const equalSign = document.getElementById('equal-sign');
 
 equalSign.addEventListener('click', () => {
-    resolveEquation(previousOperator);
+    resolveEquation
 })
 
