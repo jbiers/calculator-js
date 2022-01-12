@@ -219,3 +219,14 @@ function clearClicked() {
 clearSign.addEventListener('click', () => {
     clearClicked();
 });
+
+// Handling backspace clicks
+const backspaceSign = document.getElementById('backspace-sign');
+
+function backspaceClick() {
+
+};
+
+backspaceSign.addEventListener('click', () => {
+    backspaceClick();
+});
