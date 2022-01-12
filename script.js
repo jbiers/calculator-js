@@ -1,8 +1,16 @@
 function add(a, b) {
+    if (a == 'Infinity' || b == 'Infinity') {
+        return 'Infinity';
+    }
+
     return a + b;
 };
 
 function multiply(a, b) {
+    if (a == 'Infinity' || b == 'Infinity') {
+        return 'Infinity';
+    };
+
     return a * b;
 };
 
@@ -11,10 +19,18 @@ function divide(a, b) {
         return "Infinity";
     };
 
+    if (a == 'Infinity' || b == 'Infinity') {
+        return 'Infinity';
+    };
+
     return a / b;
 };
 
 function subtract(a, b) {
+    if (a == 'Infinity' || b == 'Infinity') {
+        return 'Infinity';
+    };
+
     return a - b;
 };
 
@@ -24,6 +40,11 @@ const operatorText = document.getElementById('operator-text');
 
 function updateText(toBeChanged, change) {
     if (change == '+' || change == '-' || change == '÷' || change == 'x' || toBeChanged.textContent == '0' || toBeChanged.textContent == '') {
+        toBeChanged.textContent = change;
+    }
+
+    else if (toBeChanged.textContent == 'Infinity') {
+        clearText(firstNumText);
         toBeChanged.textContent = change;
     }
 
@@ -173,6 +194,10 @@ equalSign.addEventListener('click', () => {
         clearText(operatorText);
 
         updateText(firstNumText, currentFirstNumber);
+
+        if (currentFirstNumber == 'Infinity') {
+            currentFirstNumber = 0;
+        }
     }
 });
 
