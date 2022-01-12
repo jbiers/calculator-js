@@ -1,10 +1,6 @@
 # calculator-js
 A calculator made with JavaScript, HTML and CSS.
 
-## What I've Learned:
-- eval() function
-- Number.isSafeInteger()
-
 ## TODO: 
 - Implement basic design. --OK
 - Style dark mode. --OK
@@ -15,6 +11,11 @@ A calculator made with JavaScript, HTML and CSS.
 - Handle division by 0 properly. --OK
 - Handle clicks to the clear button. --OK
 - Allow for multiple operations. --OK
-- Handle clicks to backspace button.
+- Handle clicks to backspace button. --OK
 - Handle clicks to dot (floating points).
-- Fix overflow.
+- Fix text overflow.
+- Add keyboard use.
+
+## What I've Learned:
+- eval() function
+- Number.isSafeInteger()

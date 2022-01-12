@@ -224,7 +224,39 @@ clearSign.addEventListener('click', () => {
 const backspaceSign = document.getElementById('backspace-sign');
 
 function backspaceClick() {
+    if (operatorClicked) {
+        if ((currentSecondNumber >= 10 || currentSecondNumber <= -10) && secondNumText.textContent != '') {
+            clearText(secondNumText);
 
+            currentSecondNumber = ((currentSecondNumber - (currentSecondNumber % 10)) / 10);
+
+            secondNumText.textContent = currentSecondNumber;
+        }
+
+        else if ((currentSecondNumber < 10 && currentSecondNumber > -10) && secondNumText.textContent != '') {
+            clearText(secondNumText);
+            currentSecondNumber = 0;
+        }
+
+        else if (currentSecondNumber == 0 && secondNumText.textContent == '') {
+            clearText(operatorText);
+            operatorClicked = false;
+        }
+    }
+
+    else {
+        if (currentFirstNumber == 0) {
+            return;
+        }
+
+        else {
+            clearText(firstNumText);
+
+            currentFirstNumber = ((currentFirstNumber - (currentFirstNumber % 10)) / 10);
+
+            firstNumText.textContent = currentFirstNumber;
+        }
+    }
 };
 
 backspaceSign.addEventListener('click', () => {
