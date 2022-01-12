@@ -18,41 +18,51 @@ function subtract(a, b) {
     return a - b;
 };
 
-const firstNumText = document.getElementById('first-num-text');
-const secondNumText = document.getElementById('second-num-text');
-const operatorText = document.getElementById('operator-text');
+function resolveEquation(operator) {
+    if (previousOperator == '+') {
+        currentFirstNumber = add(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
 
-function updateText(toBeChanged, change) {
-    if (change == '+' || change == '-' || change == '÷' || change == 'x' || toBeChanged.textContent == '0' || toBeChanged.textContent == '') {
-        toBeChanged.textContent = change;
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
+    }
+
+    else if (previousOperator == '-') {
+        currentFirstNumber = subtract(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
+    }
+
+    else if (previousOperator == '÷') {
+        currentFirstNumber = divide(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
     }
 
     else {
-        toBeChanged.textContent = toBeChanged.textContent + change;
+        currentFirstNumber = multiply(currentFirstNumber, currentSecondNumber);
+        currentSecondNumber = 0;
+
+        previousOperator = operator;
+
+        // show total on screen
+        console.log(currentFirstNumber);
     }
 };
 
-function clearText(toBeCleared) {
-    toBeCleared.textContent = '';
+function updateText() {
+
 }
-
-function solve(a, b, operator) {
-    if (operator == '+') {
-        return add(a, b);
-    }
-
-    else if (operator == '-') {
-        return subtract(a, b)
-    }
-
-    else if (operator == '÷') {
-        return divide(a, b);
-    }
-
-    else if (operator == 'x') {
-        return multiply(a, b);
-    }
-};
 
 // Deal with theme changes
 const darkModeBtn = document.getElementById('dark-mode-btn');
@@ -99,20 +109,23 @@ lightModeBtn.addEventListener("click", () => {
 const numbers = Array.from(document.getElementsByClassName('number-key'));
 let currentFirstNumber = 0;
 let currentSecondNumber = 0;
-
-let operatorClicked = false;
+let currentOperator = ' ';
+let previousOperator = ' ';
+let operatorIsOn = false;
 
 function clickNumber(number) {
-    if (operatorClicked) {
+    if (operatorIsOn) {
         currentSecondNumber = (currentSecondNumber * 10) + number;
 
-        updateText(secondNumText, number);
+        // update screen to show current second number
+        console.log(currentSecondNumber);
     }
 
     else {
         currentFirstNumber = (currentFirstNumber * 10) + number;
 
-        updateText(firstNumText, number);
+        // update screen to show current first number
+        console.log(currentFirstNumber);
     }
 };
 
@@ -122,15 +135,24 @@ numbers.forEach(number => {
     });
 });
 
-// Dealing with operators
+// Deal with pressing operators
 const operators = Array.from(document.getElementsByClassName('operator'));
-let currentOperator = ' ';
 
 function clickOperator(operator) {
-    currentOperator = operator;
-    operatorClicked = true;
+    if (operatorIsOn) {
+        resolveEquation(operator);
 
-    updateText(operatorText, operator);
+        // update screen to add operator
+        console.log(operator);
+    }
+
+    else {
+        // update screen to add operator
+        console.log(operator);
+
+        previousOperator = operator;
+        operatorIsOn = true;
+    }
 };
 
 operators.forEach(operator => {
@@ -139,43 +161,14 @@ operators.forEach(operator => {
     });
 });
 
-// Handling the equal sign
+// Deal with equal sign pressing
 const equalSign = document.getElementById('equal-sign');
 
 equalSign.addEventListener('click', () => {
-    if (!operatorClicked) {
-        return;
-    }
+    resolveEquation(previousOperator);
+    operatorIsOn = false;
 
-    else {
-        operatorClicked = false;
-
-        currentFirstNumber = solve(currentFirstNumber, currentSecondNumber, currentOperator);
-        currentSecondNumber = 0;
-
-        clearText(firstNumText);
-        clearText(secondNumText);
-        clearText(operatorText);
-
-        updateText(firstNumText, currentFirstNumber);
-    }
-});
-
-// Handling the clear sign
-const clearSign = document.getElementById('clear-sign');
-
-function clearClicked() {
     currentFirstNumber = 0;
     currentSecondNumber = 0;
-    operatorClicked = false;
+})
 
-    clearText(firstNumText);
-    clearText(secondNumText);
-    clearText(operatorText);
-
-    updateText(firstNumText, 0);
-}
-
-clearSign.addEventListener('click', () => {
-    clearClicked();
-});
