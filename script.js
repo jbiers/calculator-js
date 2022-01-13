@@ -143,6 +143,14 @@ numbers.forEach(number => {
     });
 });
 
+document.addEventListener('keypress', event => {
+    if (event.key == '1' || event.key == '2' || event.key == '3' || event.key == '4' ||
+        event.key == '5' || event.key == '6' || event.key == '7' || event.key == '8' ||
+        event.key == '9' || event.key == '0') {
+        clickNumber(Number(event.key));
+    };
+});
+
 // Dealing with operators
 const operators = Array.from(document.getElementsByClassName('operator'));
 let currentOperator = ' ';
@@ -175,10 +183,25 @@ operators.forEach(operator => {
     });
 });
 
+document.addEventListener('keypress', event => {
+    if (event.key == 'x' || event.key == '-' || event.key == '+') {
+        clickOperator(event.key);
+    }
+
+    else if (event.key == '*') {
+        clickOperator('x')
+    }
+
+    else if (event.key == '/') {
+        event.preventDefault();
+        clickOperator('÷');
+    }
+});
+
 // Handling the equal sign
 const equalSign = document.getElementById('equal-sign');
 
-equalSign.addEventListener('click', () => {
+function equalClick() {
     if (!operatorClicked) {
         return;
     }
@@ -199,6 +222,15 @@ equalSign.addEventListener('click', () => {
             currentFirstNumber = 0;
         }
     }
+};
+equalSign.addEventListener('click', () => {
+    equalClick();
+});
+
+document.addEventListener('keypress', event => {
+    if (event.key == 'Enter') {
+        equalClick();
+    };
 });
 
 // Handling the clear sign
@@ -218,6 +250,12 @@ function clearClicked() {
 
 clearSign.addEventListener('click', () => {
     clearClicked();
+});
+
+document.addEventListener('keypress', event => {
+    if (event.key == 'c' || event.key == 'C') {
+        clearClicked();
+    };
 });
 
 // Handling backspace clicks
@@ -261,4 +299,10 @@ function backspaceClick() {
 
 backspaceSign.addEventListener('click', () => {
     backspaceClick();
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key == 'Backspace') {
+        backspaceClick();
+    }
 });

@@ -13,9 +13,10 @@ A calculator made with JavaScript, HTML and CSS.
 - Allow for multiple operations. --OK
 - Handle clicks to backspace button. --OK
 - Handle clicks to dot (floating points).
-- Fix text overflow.
+- Fix text overflow. --OK
 - Add keyboard use.
 
 ## What I've Learned:
 - eval() function
 - Number.isSafeInteger()
+- event.preventDefault()
