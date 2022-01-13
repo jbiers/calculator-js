@@ -116,6 +116,26 @@ lightModeBtn.addEventListener("click", () => {
     darkMode = false;
 });
 
+// Deal with audio
+const audio = document.getElementById('audio');
+const audioButton = document.getElementById('audio-button');
+let audioOn = false;
+
+function playAudio() {
+    if (audioOn) {
+        audio.play();
+    };
+};
+
+function audioClick() {
+    audioOn = !audioOn;
+};
+
+audioButton.addEventListener('click', () => {
+    audioClick();
+});
+
+
 // Deal with pressing numbers
 const numbers = Array.from(document.getElementsByClassName('number-key'));
 let currentFirstNumber = 0;
@@ -124,6 +144,8 @@ let currentSecondNumber = 0;
 let operatorClicked = false;
 
 function clickNumber(number) {
+    playAudio();
+
     if (operatorClicked) {
         currentSecondNumber = (currentSecondNumber * 10) + number;
 
@@ -156,6 +178,8 @@ const operators = Array.from(document.getElementsByClassName('operator'));
 let currentOperator = ' ';
 
 function clickOperator(operator) {
+    playAudio();
+
     if (!operatorClicked) {
         currentOperator = operator;
         operatorClicked = true;
@@ -202,6 +226,8 @@ document.addEventListener('keypress', event => {
 const equalSign = document.getElementById('equal-sign');
 
 function equalClick() {
+    playAudio();
+
     if (!operatorClicked) {
         return;
     }
@@ -237,6 +263,8 @@ document.addEventListener('keypress', event => {
 const clearSign = document.getElementById('clear-sign');
 
 function clearClicked() {
+    playAudio();
+
     currentFirstNumber = 0;
     currentSecondNumber = 0;
     operatorClicked = false;
@@ -262,6 +290,8 @@ document.addEventListener('keypress', event => {
 const backspaceSign = document.getElementById('backspace-sign');
 
 function backspaceClick() {
+    playAudio();
+
     if (operatorClicked) {
         if ((currentSecondNumber >= 10 || currentSecondNumber <= -10) && secondNumText.textContent != '') {
             clearText(secondNumText);
