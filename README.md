@@ -1,6 +1,8 @@
 # calculator-js
 A calculator made with JavaScript, HTML and CSS.
 
+Check out this project live [HERE](https://jbiers.github.io/calculator-js/)
+
 ![Screenshot from 2022-01-13 11-50-43](https://user-images.githubusercontent.com/85142222/149364265-5d46400d-16a5-4a84-be96-52a2993cff13.png)
 ![Screenshot from 2022-01-13 11-50-47](https://user-images.githubusercontent.com/85142222/149364300-879db683-cb37-4ade-bdf3-9a4d62facf27.png)
 
